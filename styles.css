@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; 
+	min-height: 100vh;
+	overflow: hidden;
+
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(135deg, #C6D663, #ebf6a0);
+	font-family: 'Quicksand';
+}
+
+.container {
+	max-width: 500px;
+	background: rgba(255, 255, 255);
+	box-shadow: 0 15px 35px rgba(150, 175, 50, 0.5),  
+				0 40px 90px rgba(150, 175, 50, 0.7);
+}
+
+.i-container {
+	transition: all 0.4s ease;
+}
+
+.i-container:hover {
+	transform: rotate(-2deg) scale(1.02);
+}
+
+img {
+	width: 100%;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 40px;
+}
+
+#displayAnswer {
+	width: 100%;
+	font-family: 'Sour Gummy';
+	font-size: 24px;
+	border-top: none !important;
+	border-bottom-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+}
+
+.btn {
+	width: 50px;
+	height: 50px;
+	font-size: 20px;
+	transition: all 0.4s ease;
+}
+
+.btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(25, 135, 84, 0.2);
+}
+
+.form-label {
+	font-family: 'Sour Gummy';
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: rgb(25, 135, 84);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-effect {
+    animation: shake 0.4s ease;
+}

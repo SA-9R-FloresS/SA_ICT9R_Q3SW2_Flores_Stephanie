@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- META ATTRIBUTES -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Calculators, Operators... Alligators? | Q3 Seatwork 2</title>
+
+	<!-- BS5 SETUP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+	<!-- CSS SETUP -->
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<!-- JS SETUP -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container d-flex flex-column align-items-center px-5 py-4 rounded-5 animate__animated animate__fadeInUp animate__slow">
+		<div id="i-container" class="i-container">
+			<img src="https://i.redd.it/ayauqhqfr3u21.jpg">
+			<input type="text" id="displayAnswer" class="py-2 px-4 text-end mb-3" disabled>
+		</div>
+		<div class="row my-2 justify-content-center text-center">
+			<div class="col-auto">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="clearInput()">C</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('divide')">÷</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('multiply')">×</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-success mx-2 rounded-circle material-icons" onclick="clearInput()">&#xe14a;</button>
+			</div>
+		</div>
+		<div class="row my-3 justify-content-center">
+			<div class="col-6">
+				<label for="numA" class="form-label">Value for <i>a</i></label>
+				<input type="number" id="numA" class="form-control" placeholder="A is for Alligator!">
+			</div>
+			<div class="col">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('power')">^</button>
+			</div>
+			<div class="col">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('subtract')">-</button>
+			</div>
+		</div>
+		<div class="row my-2 justify-content-center">
+			<div class="col-6">
+				<label for="numB" class="form-label">Value for <i>b</i></label>
+				<input type="number" id="numB" class="form-control" placeholder="B is for Bite!">
+			</div>
+			<div class="col">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('modulo')">%</button>
+			</div>
+			<div class="col">
+				<button class="btn btn-success mx-2 rounded-circle" onclick="calculate('add')">+</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function calculate(operation) {
+			var numA = document.getElementById('numA').value;
+			var numB = document.getElementById('numB').value;
+			var error = document.getElementById('i-container');
+			var result;
+
+			if (numA === "" || numB === "") {
+        		document.getElementById('displayAnswer').value = "error: missing values 🐊";
+				error.classList.add("shake-effect");
+            	setTimeout(() => error.classList.remove("shake-effect"), 200);
+        		return;
+    		}
+
+			numA = parseFloat(numA);
+			numB = parseFloat(numB);
+
+			if (operation === 'add') {
+				result = numA + numB;
+			} else if (operation === 'subtract') {
+				result = numA - numB;
+			} else if (operation === 'multiply') {
+				result = numA * numB;
+			} else if (operation === 'divide') {
+				if (numB === 0) {
+					result = "error: undefined 🐊"
+					error.classList.add("shake-effect");
+            		setTimeout(() => error.classList.remove("shake-effect"), 200);
+				} else {
+					result = numA / numB;
+				}
+			} else if (operation === 'modulo') {
+				if (numB === 0) {
+					result = "error: undefined 🐊"
+					error.classList.add("shake-effect");
+            		setTimeout(() => error.classList.remove("shake-effect"), 200);
+				} else {
+					result = numA % numB;
+				}
+			} else if (operation === 'power') {
+				result = numA ** numB;
+			}
+
+			document.getElementById('displayAnswer').value = result;
+		}
+
+		function clearInput() {
+			document.getElementById('numA').value = "";
+			document.getElementById('numB').value = "";
+			document.getElementById('displayAnswer').value = "";
+		}
+	</script>
+</body> 
+</html>
